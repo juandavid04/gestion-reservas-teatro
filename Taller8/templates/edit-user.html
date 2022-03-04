@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='materialize.min.css')}}" media="screen,projection">
+    <script type="text/javascript" src="{{url_for('static',filename='materialize/js/materialize.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='librerias/jquery-3.3.1.min.js')}}" ></script>
+	<title>Visualización Usuarios</title>
+</head>
+
+<body class="container blue lighten-4">
+
+    <div>
+        <h3>Aquí podrás actualizar cierta información sobre tus usuarios</h3>
+    </div>
+
+    <div>
+        <form action="/update/{{contact.0}}" method="POST">
+            <div>
+              <label style="color: black; font-size: 20px;">Nombres</label>
+              <input type="text" id="nombres" name="nombre" value="{{contact.1}}">
+            </div>
+            <div>
+              <label style="color: black; font-size: 20px;">Apellidos</label>
+              <input type="text" id="apellidos" name="apellido" value="{{contact.2}}">
+            </div>
+            <div>
+              <label style="color: black; font-size: 20px;">Email</label>
+              <input type="text" id="email" name="email" value="{{contact.3}}">
+            </div>
+            <div>
+              <label style="color: black; font-size: 20px;">Telefono</label>
+              <input type="text" id="telefono" name="telefono" value="{{contact.4}}">
+            </div>
+            <div>
+              <label style="color: black; font-size: 20px;">Usuario</label>
+              <input type="text" id="usuario" name="usuario" value="{{contact.5}}">
+            </div>
+            <div>
+              <!-- <a href="/update_contact" class="waves-effect waves-light btn"><i class="material-icons left">create</i>Confirmar</a> -->
+              <button type="submit" class="btn btn-primary btn-block">Actualizar</button>
+            </div>
+          </form>
+    </div>
+
+</body>
+</html>

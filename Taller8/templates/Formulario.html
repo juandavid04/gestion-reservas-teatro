@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='materialize.min.css')}}" media="screen,projection">
+    <script type="text/javascript" src="{{url_for('static',filename='materialize/js/materialize.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='librerias/jquery-3.3.1.min.js')}}" ></script>
+	<title>Registro de usuarios</title>
+</head>
+
+<body class="container  grey lighten-3">
+	<h2 class="card-panel light center-align grey darken-2 white-text">Registro de usuario</h2>
+	<!-- -->
+	<form action="/add_user" method="POST">
+		<div class="card-panel row grey darken-2">
+			<div class="col s7">
+				<label class="flow-text">Nombres</label>
+				<input type="text" id="nombres" name="nombre" placeholder="Nombre">
+				<label class="flow-text">Apellidos</label>
+				<input type="text" id="apellidos" name="apellido" placeholder="Apellidos">
+				<div class="col s6">
+					<label class="flow-text">Tipo de documento</label>
+					<select class="browser-default" name="tipoId">
+						<option id="1">CC</option>
+						<option id="2">TI</option>
+					</select>
+				</div>
+				<div class="col s6">
+					<label class="flow-text">Documento</label>
+					<input type="text" id="documento" name="documento" placeholder="Documento">
+				</div>
+				<label class="flow-text">Lugar de Nacimiento</label>
+				<input type="text" id="lugarN" name="lugarNacimiento" placeholder="Lugar de Nacimiento">
+				<label class="flow-text">Fecha nacimiento</label>
+				<input type="text" name="fechaNacimiento" class="datepicker" placeholder="Fecha de Nacimiento">
+				<label class="flow-text">Email</label>
+				<input type="text" id="email" name="email" placeholder="Email">
+			</div>
+			<div class="col s5">
+				<label class="flow-text">Telefono</label>
+				<input type="text" id="telefono" name="telefono" placeholder="Telefono">
+				<label class="flow-text">Usuario</label>
+				<input type="text" id="usuario" name="usuario" placeholder="Usuario">
+				<label class="flow-text">Contraseña</label>
+				<input type="password" id="contraseña" name="password" placeholder="Contraseña">
+				<label class="flow-text">Confirmar contraseña</label>
+				<input type="password" id="confirmar" name="password" placeholder="Confirmar contraseña">
+				<label  class="flow-text">Lugar de Residencia</label>
+
+				<div class="input-field col s6">
+					<select id="departamentos" name="departamento" class="browser-default">
+						<option>Departamento</option>
+						<option>Amazonas</option>
+						<option>Antioquia</option>
+						<option>Arauca</option>
+						<option>Atlántico</option>
+						<option>Bogotá</option>
+						<option>Bolivar</option>
+						<option>Boyacá</option>
+						<option>Caldas</option>
+						<option>Caquetá</option>
+						<option>Casanare</option>
+						<option>Cauca</option>
+						<option>Cesar</option>
+						<option>Chocó</option>
+						<option>Córdoba</option>
+						<option>Cundinamarca</option>
+						<option>Guainía</option>
+						<option>Guaviare</option>
+						<option>Huila</option>
+						<option>La Guajira</option>
+						<option>Magdalena</option>
+						<option>Meta</option>
+						<option>Nariño</option>
+						<option>Norte de Santander</option>
+						<option>Putumayo</option>
+						<option>Quindío</option>
+						<option>Risaralda</option>
+						<option>San Andrés y Providencia</option>
+						<option>Santander</option>
+						<option>Sucre</option>
+						<option>Tolima</option>
+						<option>Valle del Cauca</option>
+						<option>Vaupés</option>
+						<option>Vichada</option>
+					</select>
+			 	</div>
+
+			 	<div class="input-field col s6">
+					<select id="municipios" name="municipio" class="browser-default">
+						<option>Municipio</option>
+					</select>
+			 	</div><br><br>
+
+			 	<button class="btn waves-effect teal" type="submit" name="action">Enviar
+	            <i class="material-icons right">send</i>
+	            </button>
+	        </div>
+		</div>
+	</form>
+	<script type="text/javascript" src="{{url_for('static',filename='Registro.js')}}"></script>
+</body>
+</html>

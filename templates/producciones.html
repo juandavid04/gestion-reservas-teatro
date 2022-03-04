@@ -1,0 +1,77 @@
+{% extends 'inicio_sesion.html' %}
+
+{% block subpagina%}
+<div class="container">
+    <br>
+    <h2> Añadir Producciones </h2><br>
+    <form action="/sesion/id={{id}}/producciones/add" method="POST">
+        <div class="row">
+            <div class="col">
+                <h4>Nombre</h4>
+            </div>        
+            <div class="col">
+                <h4>Descripción</h4>
+            </div>
+            <div class="col" id="ge">
+                <h4>Generos</h4>
+            </div>
+            <div class="col">
+                <h4>Otros Detalles</h4>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input class="form-control" type="text" name="nomprod">
+            </div>        
+            <div class="col">
+                <input class="form-control" type="text" name="desc">
+            </div>
+            <div class="col">
+                <select class="form-select" id="generos" name="generos" onchange="otro()">
+                    {% for i in generos %}
+                        <option> {{i[0]}} </option>
+                    {% endfor %}
+                    <option>Otro Genero</option>
+                </select>
+                <input id="atras" type="hidden">
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" name="detalles">
+            </div>
+            <div class="col">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Enviar</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="location.href='http://127.0.0.1:5000/sesion/id={{id}}'">Atras</button>
+            </div>
+        </div>
+    </form>
+    <script src="{{ url_for('static', filename='fun.js') }}"></script>
+    <br>
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Detalles</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in tabla %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                    <td><a class="btn btn-outline-info my-2 my-sm-0" type="button" onclick="location.href='/sesion/id={{id}}/producciones/idprod={{i[4]}}/add'">info</a></td>
+                    <form action="/sesion/id={{id}}/producciones/delete" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <td><button class="btn btn-outline-info my-2 my-sm-0" type="submit" name="eliminar" value="{{i[4]}}">Eliminar</button></td>
+                    </form>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>  
+{% endblock %}

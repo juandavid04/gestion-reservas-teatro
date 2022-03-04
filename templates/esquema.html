@@ -1,0 +1,37 @@
+{% extends 'inicio_sesion.html' %}
+
+{% block subpagina%}
+	<script src="{{ url_for('static', filename='funciones.js') }}"></script>
+	<div class="row">
+		<h2>Esquema de Bloques</h2>
+				<div class="col">
+					<div class="container" style='border:1px solid black; width:700px; height:400px; text-align:center; line-height:50px; overflow:scroll;'>
+							{% for i in bloques %}
+								<div class="row"  id="marco">
+									<div class="col" style="text-align:center;">
+									{% for j in i %}										
+										<button class="btn btn-outline-info" type="button" style='margin: 10px; width:50px; height:50px; text-align:center;'
+										onclick="location.href='http://127.0.0.1:5000/sesion/id={{id}}/esquema/idbloque={{j[1]}}'"> {{j[0]}} </button>										
+									{% endfor %}
+									</div>
+								</div>
+							{% endfor %}
+					</div>
+				</div>
+				<div class="col container">
+					<br><br>
+					<h3>Número de Bloques</h3><br>
+					<form action='/sesion/id={{id}}/esquema' method="POST">
+						<input type="text" id="Nbloques" name="Nbloques" class="form-control"><br>
+						<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Añadir Fila</button>
+						<button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="location.href='http://127.0.0.1:5000/sesion/id={{id}}'">Atras</button>
+						<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					</form>
+					<form action='/sesion/id={{id}}/esquema/deletebloque' method="POST">
+						<input type="text" id="Eli_bloques" name="Eli_bloques" class="form-control" placeholder="ejemplo: 1a"><br>
+						<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Eliminar Bloque</button>
+						<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					</form>
+				</div>
+	</div>
+{% endblock %}

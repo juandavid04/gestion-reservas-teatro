@@ -1,0 +1,46 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+<div class="container">
+    <nav class="navbar navbar-light">
+        <div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000'">Inicio</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000/registro_teatro'">Registrar Teatro</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            onclick="location.href='http://127.0.0.1:5000/login'">Login</button>
+        </div>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" 
+            onclick="location.href='http://127.0.0.1:5000'">Atras</button>
+    </nav>
+    <hr>
+</div>
+
+<div class="container">
+    <h4>Producciones de {{nombre}}</h4><br>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Detalles</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for i in tabla %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                    <td><button class="btn btn-outline-info my-2 my-sm-0" type="button" name="eliminar" onclick="location.href='id_tea={{id}}/idprod={{i[4]}}'">Info</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+</div>
+{% endblock %}

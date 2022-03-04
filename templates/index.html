@@ -1,0 +1,40 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+	<div class="container">
+		<nav class="navbar navbar-light">
+			<div>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+				onclick="location.href='http://127.0.0.1:5000/registro_teatro'">Registrar Teatro</button>
+
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+				onclick="location.href='http://127.0.0.1:5000/login'">Login</button>
+			</div>
+		</nav>
+		<hr>
+	</div>
+
+
+	<table class="table container">
+		<thead class="thead-light">
+		<tr>
+			<th scope="col">Nombre</th>
+			<th scope="col">Dirección</th>
+			<th scope="col">Telefono</th>
+			<th scope="col">Detalles</th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for i in datos %}
+				<tr>
+					<td>{{i[0]}}</td>
+					<td>{{i[1]}}</td>
+					<td>{{i[2]}}</td>
+					<td>{{i[3]}}</td>
+					<td><button class="btn btn-outline-info my-2 my-sm-0" type="button" name="producciones value="{{i[4]}}" onclick="location.href='id_tea={{i[4]}}'">Producciones</button></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

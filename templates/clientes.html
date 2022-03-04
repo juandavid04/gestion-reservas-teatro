@@ -1,0 +1,38 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+
+	<div class="container">
+		<nav class="navbar navbar-light">
+			<h2>{{nombre}}</h2>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" type="button" href='/sesion/id={{id}}'>Perfil</a>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" type="button" href='/sesion/id={{id}}/esquema'>Esquema</a>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" type="button" href='/sesion/id={{id}}/producciones/add'>Producciones</a>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" type="button" href="/logout">Cerrar Sesión</a>
+		</nav>
+		<hr><br>
+		{% block subpagina %}
+        <div class="container">
+            <h4>Clientes</h4><br>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Detalles</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for i in tabla %}
+                        <tr>
+                            <td>{{i[0]}}</td>
+                            <td>{{i[1]}}</td>
+                            <td>{{i[2]}}</td>
+                            <td>{{i[3]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table><br>
+        </div>
+        {% endblock %}

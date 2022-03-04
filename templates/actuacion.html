@@ -1,0 +1,45 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+<div class="container">
+    <nav class="navbar navbar-light">
+        <div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000'">Inicio</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000/registro_teatro'">Registrar Teatro</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            onclick="location.href='http://127.0.0.1:5000/login'">Login</button>
+        </div>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" 
+            onclick="location.href='http://127.0.0.1:5000/id_tea={{id}}'">Atras</button>
+    </nav>
+    <hr>
+</div>
+
+<div class="container">
+    <h4>Producciones de {{nombre}}>{{produccion}}</h4><br>
+    <h4>Horarios</h4><br>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora Inicio</th>
+            <th scope="col">Hora Fin</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for i in tabla %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td><button class="btn btn-outline-info my-2 my-sm-0" type="button" name="eliminar" onclick="location.href='http://127.0.0.1:5000/id_tea={{id}}/idprod={{idprod}}/idact={{i[3]}}/bloques'">Reservar</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+</div>
+{% endblock %}

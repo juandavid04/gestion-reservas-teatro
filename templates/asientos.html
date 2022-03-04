@@ -1,0 +1,55 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+<div class="container">
+    <nav class="navbar navbar-light">
+        <div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000'">Inicio</button>
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000/registro_teatro'">Registrar Teatro</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            onclick="location.href='http://127.0.0.1:5000/login'">Login</button>
+        </div>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" 
+        onclick="location.href='http://127.0.0.1:5000/id_tea={{id}}/idprod={{idprod}}/idact={{idact}}/bloques'">Atras</button>
+    </nav>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="container row"></div>
+    <h4>Producciones de {{nombre}}>{{produccion}}</h4><br>
+    <form action='/id_tea={{id}}/idprod={{idprod}}/idact={{idact}}/{{idbloque}}' method="POST">
+        <div class="col">
+            <div class="container" style='border:1px solid black; width:700px; height:400px; text-align:center; line-height:50px; overflow-x: auto; overflow-y: scroll;'>
+                {% for i in asientos %}
+                    <div class="row"  id="marco">
+                        <div class="col" style="text-align:center;">
+                        {% for j in i %}	
+                            {% if j[1] == '1' %}
+                                <button class="btn btn-outline-info" type="button" style='margin: 10px; width:50px; height:50px; text-align:center;'
+                                onclick="seleccionado(this)" value="{{j[2]}}"> {{j[0]}} </button>	
+                                <input type="hidden" id="{{j[2]}}" name="{{j[2]}}" value='1'>		
+                            {% endif %}			
+                            {% if j[1] == '2' %}
+                                <button class="btn btn-danger" type="button" style='margin: 10px; width:50px; height:50px ; text-align:center;'
+                                disabled=true> {{j[0]}} </button>			
+                            {% endif %}					
+                        {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Reservar</button>
+        </div>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='fun.js') }}"></script>
+{% endblock %}

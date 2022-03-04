@@ -1,0 +1,28 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+
+	{% from "_macro.html" import render_field %}
+
+	<div class="container card" style="width:40%">
+
+			<h2 class="text-center">Login</h2><br>
+			<form method="POST">
+				<div class="row control-group">
+					<div class="form-group col-xs-12 floating-label-form-group controls">
+						{{ render_field(log.emailogin, class='form-control') }}
+					</div>		
+				</div>
+
+				<div class="row control-group">
+					<div class="form-group col-xs-12 floating-label-form-group controls">
+						{{ render_field(log.contraseña, class='form-control') }}
+					</div>		
+				</div><br>
+				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+				
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+				<button class="btn btn-outline-secondary my-2 my-sm-0" type="button" onclick="location.href='http://127.0.0.1:5000'">Cancelar</button><br><br>
+			</form>
+	</div>
+{% endblock %}

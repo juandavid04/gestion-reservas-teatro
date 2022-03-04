@@ -1,0 +1,40 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+<div class="container">
+    <nav class="navbar navbar-light">
+        <div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000'">Inicio</button>
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000/registro_teatro'">Registrar Teatro</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            onclick="location.href='http://127.0.0.1:5000/login'">Login</button>
+        </div>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" 
+            onclick="location.href='http://127.0.0.1:5000/id_tea={{id}}/idprod={{idprod}}'">Atras</button>
+    </nav>
+    <hr>
+</div>
+
+<div class="container">
+    <h4>Producciones de {{nombre}}>{{produccion}}</h4><br>
+    <h4>Bloques de Asientos</h4><br>
+    <div class="col">
+        <div class="container" style='border:1px solid black; width:700px; height:400px; text-align:center; line-height:50px; overflow:scroll;'>
+                {% for i in bloques %}
+                    <div class="row"  id="marco">
+                        <div class="col" style="text-align:center;">
+                        {% for j in i %}										
+                            <button class="btn btn-outline-info" type="button" style='margin: 10px; width:50px; height:50px; text-align:center;'
+                            onclick="location.href='http://127.0.0.1:5000/id_tea={{id}}/idprod={{idprod}}/idact={{idact}}/{{j[1]}}'"> {{j[0]}} </button>										
+                        {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

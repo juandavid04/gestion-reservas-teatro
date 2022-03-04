@@ -1,0 +1,81 @@
+{% extends 'inicio_sesion.html' %}
+
+{% block subpagina%}
+
+    <h4>Información Producción</h4>
+
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Detalles</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{datos[0][0]}}</td>
+                <td>{{datos[0][1]}}</td>
+                <td>{{datos[0][2]}}</td>
+                <td>{{datos[0][3]}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Añadir Actuación</h4>
+    <form action="http://127.0.0.1:5000/sesion/id={{id}}/producciones/idprod={{datos[0][4]}}/add" method="POST">
+        <div class="row">
+            <div class="col">
+                <h4>Fecha</h4>
+            </div>        
+            <div class="col">
+                <h4>Hora de Inicio</h4>
+            </div>
+            <div class="col">
+                <h4>Hora de Fin</h4>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input class="form-control" type="text" name="fecha">
+            </div>        
+            <div class="col">
+                <input class="form-control" type="text" name="h_inicio">
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" name="h_fin">
+            </div>
+            <div class="col">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Enviar</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="location.href='http://127.0.0.1:5000/sesion/id={{id}}/producciones/add'">Atras</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora de Inicio</th>
+            <th scope="col">Hora de Fin</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in tabla %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <form action="http://127.0.0.1:5000/sesion/id={{id}}/producciones/idprod={{datos[0][4]}}/delete" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <td><button class="btn btn-outline-primary my-2 my-sm-0" name="eliminar_act" value="{{i[3]}}" type="submit">Eliminar</button></td>
+                    </form>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

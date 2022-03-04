@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='materialize.min.css')}}" media="screen,projection">
+    <script type="text/javascript" src="{{url_for('static',filename='materialize/js/materialize.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='librerias/jquery-3.3.1.min.js')}}" ></script>
+	<title>Visualización Usuarios</title>
+</head>
+
+<body class="container purple lighten-5">
+
+  <div>
+    <h3>Aquí podrás ver todos los usuarios registrados en tu plataforma.</h3>
+  </div>
+
+    <div>
+      <p>Para editar un contacto puedes pulsar este botón </p><a class="waves-effect waves-light btn"><i class="material-icons left">create</i>Editar</a>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <p>Para eliminar un contacto puedes pulsar este botón </p><a class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">delete</i>Eliminar</a>
+    </div>
+
+    <div class="indigo lighten-5">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white striped">
+        <thead class="indigo lighten-4">
+          <td><strong>Numero</strong></td>
+            <td><strong>Nombre</strong></td>
+            <td><strong>Apellido</strong></td>
+            <td><strong>Tipo Documento</strong></td>
+            <td><strong>Documento</strong></td>
+            <td><strong>Departamento</strong></td>
+            <td><strong>Municipio</strong></td>
+            <td><strong>Email</strong></td>
+            <td><strong>Telefono</strong></td>
+            <td><strong>Usuario</strong></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in contacts %}
+          <tr>
+            <td>{{contact.0}}</td>
+            <td>{{contact.1}}</td>
+            <td>{{contact.2}}</td>
+            <td>{{contact.3}}</td>
+            <td>{{contact.4}}</td>
+            <td>{{contact.5}}</td>
+            <td>{{contact.6}}</td>
+            <td>{{contact.7}}</td>
+            <td>{{contact.8}}</td>
+            <td>{{contact.9}}</td>
+            <td>{{contact.10}}</td>
+            <td>
+              <a href="/edit/{{contact.0}}" class="waves-effect waves-light btn"><i class="material-icons left">create</i>Editar</a>
+              <br></br>
+              <a href="/delete/{{contact.0}}" class="waves-effect waves-light btn red lighten-1"><i class="material-icons left">delete</i>Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <p>Si deseas agregar un nuevo usuario, por favor presiona el siguiente botón</p>
+      <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Agregar</a>
+    </div>
+    
+</body>
+</html>

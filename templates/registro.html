@@ -1,0 +1,62 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+	
+	{% from "_macro.html" import render_field %}
+
+	<div class = "container w-50">
+
+		<h2>Registro de Teatro</h2>
+
+		<form method="POST">
+			<div class="row control-group">
+				<div class="form-group col-xs-12 floating-label-form-group controls">
+					{{ render_field(regist.teatro, class='form-control') }}
+				</div>		
+			</div>
+			
+			<div class="row control-group">
+				<div class="form-group col-xs-12 floating-label-form-group controls">
+					{{ render_field(regist.gerente, class='form-control') }}
+				</div>		
+			</div>
+
+			<div class="row control-group">
+				<div class="form-group col-xs-12 floating-label-form-group controls">
+					{{ render_field(regist.direccion, class='form-control') }}
+				</div>		
+			</div>
+
+			<div class="row control-group">
+				<div class="form-group col-xs-12 floating-label-form-group controls">
+					{{ render_field(regist.email, class='form-control') }}
+				</div>		
+			</div>
+
+			<div class="row control-group">
+				<div class="form-group col-xs-12 floating-label-form-group controls">
+					{{ render_field(regist.contraseña, class='form-control') }}
+				</div>		
+			</div>
+
+			<div class="row">
+				<div class="col">
+					{{ render_field(regist.tel_teatro, class='form-control') }}
+				</div>
+			</div>
+
+			<div class="row control-group">
+				<div class="form-group col-xs-12 floating-label-form-group controls">
+					{{ render_field(regist.otros_detalles, class='form-control') }}
+				</div>		
+			</div>
+			<br>
+			<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+			<button type="submit" class="btn btn-primary">Registrar</button>
+			<button type="button" class="btn btn-secondary" onclick="location.href='http://127.0.0.1:5000'">Cancelar</button>
+
+		</form>
+	</div>
+
+{% endblock %} 

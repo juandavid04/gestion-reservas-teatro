@@ -1,0 +1,50 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+<div class="container">
+    <nav class="navbar navbar-light">
+        <div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000'">Inicio</button>
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000/registro_teatro'">Registrar Teatro</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            onclick="location.href='http://127.0.0.1:5000/login'">Login</button>
+        </div>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" 
+        onclick="location.href='http://127.0.0.1:5000/id_tea={{id}}/idprod={{idprod}}/idact={{idact}}/{{idbloque}}'">Atras</button>
+    </nav>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="container row"></div>
+    <h4>Producciones de {{nombre}}>{{produccion}}</h4><br>
+    <h3>Asientos Reservados:</h3>
+    <h3>
+        {% for i in asientos_reservados %}
+            {{i[1]}}  
+        {% endfor %}
+    </h3>
+    <form action='/resumen_reserva' method="POST">
+        <label>Primer Nombre</label>
+        <input type="text" id="prnom" name="prnom" class="form-control" style="width: 60%;">
+        <label>Segundo Nombre</label>
+        <input type="text" id="senom" name="senom" class="form-control" style="width: 60%;">
+        <label>Numero de celular</label>
+        <input type="text" id="celular" name="celular" class="form-control" style="width: 60%;">
+        <label>Detalles Tarjeto de Credito</label>
+        <input type="text" id="celular" name="tarcred" class="form-control" style="width: 60%;">
+        <label>Correo</label>
+        <input type="text" id="correo" name="correo" class="form-control" style="width: 60%;">
+        <label>Otros Detalles</label>
+        <input type="text" id="detalles" name="detalles" class="form-control" style="width: 60%;"><br>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Completar Reserva</button>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='fun.js') }}"></script>
+{% endblock %}

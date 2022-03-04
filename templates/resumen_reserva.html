@@ -1,0 +1,41 @@
+{% extends 'titulo.html' %}
+
+{% block cuerpo %}
+<div class="container">
+    <nav class="navbar navbar-light">
+        <div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000'">Inicio</button>
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  
+            onclick="location.href='http://127.0.0.1:5000/registro_teatro'">Registrar Teatro</button>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            onclick="location.href='http://127.0.0.1:5000/login'">Login</button>
+        </div>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" 
+        onclick="location.href='http://127.0.0.1:5000/id_tea={{id}}/idprod={{idprod}}/idact={{idact}}/{{idbloque}}'">Atras</button>
+    </nav>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="container row"></div>
+    <h4>Producciones de {{nombrep[0][0]}}>{{produccion}}</h4><br>
+    <h3>Asientos Reservados:</h3>
+    <h3>
+        {% for i in asientos_reservados %}
+            {{i[1]}}  
+        {% endfor %}
+    </h3>
+    <h3>Cliente:              {{nombre}}</h3>
+    <h3>Celular:              {{celular}}</h3>
+    <h3>Información Tarjeta:  {{tarjeta}}</h3>
+    <h3>Correo:               {{correo}}</h3>
+    <h3>Detalles:             {{detalles}}</h3>
+    <h3>Fecha Actuación:      {{fecha_reserva}}</h3>
+    <h3>Fecha en que fue realizada la reserva:      {{fecha_realizada}}</h3>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='fun.js') }}"></script>
+{% endblock %}
